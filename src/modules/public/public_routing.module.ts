@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './components';
-
 const routes: Routes = [
   {
     title: 'login',
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () => import('./pages').then(m => m.LoginPageModule),
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class PublicRoutingModule {}
